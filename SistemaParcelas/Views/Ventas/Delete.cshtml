@@ -1,0 +1,63 @@
+﻿@model SistemaParcelas.Models.Venta
+
+@{
+    ViewData["Title"] = "Eliminar registro";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Está seguro que desea eliminar este registro asociado a la parcela @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela) del cliente @Html.DisplayFor(model => model.IdClienteNavigation.Nombre)?</h3>
+<div>
+    <h4>Venta</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaVenta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaVenta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecioUnidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrecioUnidad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadUnidades)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadUnidades)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaEntrega)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdClienteNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdClienteNavigation.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdVenta" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

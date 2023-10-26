@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SistemaParcelas.Models.Cosecha>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registro de cosechas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Crear nuevo registro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCosecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadCafeRecolectado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoProcesamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaProcesamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCosecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadCafeRecolectado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoProcesamiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaProcesamiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdParcelaNavigation.IdParcela)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdCosechas">Editar</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdCosechas">Detalles</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdCosechas">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SistemaParcelas.Models.Venta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Administración de ventas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Registrar nueva venta</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="Ventas" asp-action="VentasCharts">Gráficos de ventas</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioUnidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadUnidades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioUnidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadUnidades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdParcelaNavigation.IdParcela)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdVenta">Editar</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdVenta">Detalles</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdVenta">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

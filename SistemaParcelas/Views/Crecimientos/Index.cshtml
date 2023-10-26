@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SistemaParcelas.Models.Crecimiento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registro del crecimiento de las parcelas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Crear nuevo registro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaSiembra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistroPlagasEnfermedades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaSiembra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistroPlagasEnfermedades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdParcelaNavigation.IdParcela)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdRegistro">Editar</a> |
+                <a class="btn btn-primary"asp-action="Details" asp-route-id="@item.IdRegistro">Detalles</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdRegistro">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

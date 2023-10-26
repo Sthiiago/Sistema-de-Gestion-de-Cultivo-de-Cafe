@@ -1,0 +1,48 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    overflow: hidden;
+    border-radius: 10%; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-div {
+    width: 60%;
+    margin: 0 auto; /* Esto centra el div horizontalmente en su contenedor */
+    text-align: center; /* Esto centra el contenido de texto dentro del div */
+    color: #333; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    font-style: italic; /* Cursiva */
+}
+
+.display-4 {
+    width: 60%;
+    margin: 0 auto; /* Esto centra el div horizontalmente en su contenedor */
+    text-align: center; /* Esto centra el contenido de texto dentro del div */
+    color: #333; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    font-style: italic; /* Cursiva */
+}

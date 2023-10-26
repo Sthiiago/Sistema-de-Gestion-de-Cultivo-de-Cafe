@@ -1,0 +1,150 @@
+﻿@model SistemaParcelas.Models.Venta
+
+@{
+    ViewData["Title"] = "Detalles venta";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Venta</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaVenta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaVenta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecioUnidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrecioUnidad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadUnidades)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadUnidades)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaEntrega)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdClienteNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdClienteNavigation.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela)
+        </dd>
+    </dl>
+</div>
+
+<h1>Ventas por fecha</h1>
+
+<div class="row mt-2">
+
+    <div class="col-sm-6">
+
+        <div class="card">
+            <div class="card-header">Ventas por fecha de la parcela @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela)</div>
+            <div class="card-body">
+                <canvas id="chartVentasParcela" style="max-height:250px"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div style="margin-bottom:15px;margin-top:15px;">
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.IdVenta">Editar</a> |
+    <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function resumenVenta() {
+            const idParcela = @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela);
+
+            fetch(`/Ventas/VentasFecha?Parcela=${idParcela}`).then((response) => {
+                return response.ok ? response.json() : Promise.reject(response);
+            }).then((dataJson) => {
+                console.log(dataJson);
+
+                const labels = dataJson.map((item) => {
+                    return item.fechaVenta
+                });
+                const values = dataJson.map((item) => {
+                    return item.ventaTotal
+                });
+
+                console.log(labels);
+                console.log(values);
+
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Venta total',
+                        data: values,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                    }]
+                };
+
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
+                };
+
+                const canvasBarras = document.getElementById("chartVentasParcela");
+
+                const graficoBarras = new Chart(canvasBarras, config);
+            })
+        }
+
+        $(document).ready(() => {
+            resumenVenta()
+        })
+    </script>
+}

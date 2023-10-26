@@ -1,0 +1,45 @@
+﻿@model SistemaParcelas.Models.Parcela
+
+@{
+    ViewData["Title"] = "Eliminar Parcela";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Está seguro de que quiere eliminar este registro?</h3>
+<div>
+    <h4>Parcela</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CoordenadasGps)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoordenadasGps)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VariedadCafe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VariedadCafe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MetodoCultivo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MetodoCultivo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SuperficieParcela)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SuperficieParcela)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdParcela" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

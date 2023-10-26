@@ -1,0 +1,42 @@
+﻿@model SistemaParcelas.Models.Parcela
+
+@{
+    ViewData["Title"] = "Detalles de la parcela";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Parcela</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CoordenadasGps)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoordenadasGps)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VariedadCafe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VariedadCafe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MetodoCultivo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MetodoCultivo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SuperficieParcela)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SuperficieParcela)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.IdParcela">Editar</a> |
+    <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+</div>

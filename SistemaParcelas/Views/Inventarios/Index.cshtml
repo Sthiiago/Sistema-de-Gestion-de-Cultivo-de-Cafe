@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SistemaParcelas.Models.Inventario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Inventario</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Registrar nuevo elemento</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCafe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadCafeDisponible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalidadCafe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoCafe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadCafeDisponible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalidadCafe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdParcelaNavigation.IdParcela)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdInventario">Editar</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdInventario">Detalles</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdInventario">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

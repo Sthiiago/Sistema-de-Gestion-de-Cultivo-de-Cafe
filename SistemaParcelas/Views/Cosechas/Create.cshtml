@@ -1,0 +1,57 @@
+﻿@model SistemaParcelas.Models.Cosecha
+
+@{
+    ViewData["Title"] = "Crear registro";
+}
+
+<h1>Crear registro</h1>
+
+<h4>Cosecha</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdParcela" class="control-label"></label>
+                <select asp-for="IdParcela" class ="form-control" asp-items="ViewBag.IdParcela"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCosecha" class="control-label"></label>
+                <input asp-for="FechaCosecha" class="form-control" />
+                <span asp-validation-for="FechaCosecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CantidadCafeRecolectado" class="control-label"></label>
+                <input asp-for="CantidadCafeRecolectado" class="form-control" />
+                <span asp-validation-for="CantidadCafeRecolectado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetodoProcesamiento" class="control-label"></label>
+                <input asp-for="MetodoProcesamiento" class="form-control" />
+                <span asp-validation-for="MetodoProcesamiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaProcesamiento" class="control-label"></label>
+                <input asp-for="FechaProcesamiento" class="form-control" />
+                <span asp-validation-for="FechaProcesamiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:10px;margin-bottom:10px;">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

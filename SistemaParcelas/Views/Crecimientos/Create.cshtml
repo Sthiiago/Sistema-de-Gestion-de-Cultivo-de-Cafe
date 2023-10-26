@@ -1,0 +1,49 @@
+﻿@model SistemaParcelas.Models.Crecimiento
+
+@{
+    ViewData["Title"] = "Crear registro";
+}
+
+<h1>Crear</h1>
+
+<h4>Registro de parcela</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdParcela" class="control-label"></label>
+                <select asp-for="IdParcela" class ="form-control" asp-items="ViewBag.IdParcela"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaSiembra" class="control-label"></label>
+                <input asp-for="FechaSiembra" class="form-control" />
+                <span asp-validation-for="FechaSiembra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistroPlagasEnfermedades" class="control-label"></label>
+                <select asp-for="RegistroPlagasEnfermedades" class="form-control">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:10px;margin-bottom:10px">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

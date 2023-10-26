@@ -1,0 +1,63 @@
+﻿@model SistemaParcelas.Models.Empleado
+
+@{
+    ViewData["Title"] = "Eliminar empleado";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Está seguro que desea eliminar el registro del empleado?</h3>
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaContratacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaContratacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TareasAsignadas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TareasAsignadas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Contacto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Contacto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HorarioLaboral)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HorarioLaboral)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdEmpleado" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

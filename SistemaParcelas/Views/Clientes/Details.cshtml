@@ -1,0 +1,36 @@
+﻿@model SistemaParcelas.Models.Cliente
+
+@{
+    ViewData["Title"] = "Detalles del cliente";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Contacto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Contacto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.IdCliente">Editar</a> |
+    <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+</div>

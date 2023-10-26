@@ -1,0 +1,54 @@
+﻿@model SistemaParcelas.Models.Cosecha
+
+@{
+    ViewData["Title"] = "Detalles del registro";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Cosecha</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaCosecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaCosecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadCafeRecolectado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadCafeRecolectado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MetodoProcesamiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MetodoProcesamiento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaProcesamiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaProcesamiento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.IdCosechas">Editar</a> |
+    <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+</div>

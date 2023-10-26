@@ -1,0 +1,45 @@
+﻿@model SistemaParcelas.Models.Inventario
+
+@{
+    ViewData["Title"] = "Eliminar elemento";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Está seguro que desea eliminar este elemento del inventario asociado a la parcela @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela)?</h3>
+<div>
+    <h4>Elemento</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoCafe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoCafe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadCafeDisponible)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadCafeDisponible)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CalidadCafe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CalidadCafe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdParcelaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdParcelaNavigation.IdParcela)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdInventario" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a class="btn btn-warning" asp-action="Index">Volver a la lista</a>
+    </form>
+</div>
